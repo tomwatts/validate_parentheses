@@ -10,9 +10,13 @@ class TestValidateParentheses < Test::Unit::TestCase
 		assert_equal(true, validate_parentheses("()"))
 		assert_equal(true, validate_parentheses("(()(()(()))())"))
 		assert_equal(true, validate_parentheses("a(b+c)(d(e-f)(g(h+i*j)))(k/l)"))
+		assert_equal(true, validate_parentheses("(<>[{}])"))
 
 		assert_equal(false, validate_parentheses(")"))
 		assert_equal(false, validate_parentheses("(("))
+		assert_equal(false, validate_parentheses("(<)>"))
+		assert_equal(false, validate_parentheses("(<>)]"))
+		assert_equal(false, validate_parentheses("{{}"))
 	end
 
 end

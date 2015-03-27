@@ -6,12 +6,17 @@
 #   - True if ... false otherwise.
 
 def validate_parentheses(input)
+	open_close_chars = { \
+		')' => '(', \
+		']' => '[', \
+		'}' => '{', \
+		'>' => '<' }
 	char_arr = Array.new()
 	input.chars.each do |c|
-		if (c == "(")
+		if (open_close_chars.value?(c))
 			char_arr.push(c)
-		elsif (c == ")")
-			return false if (char_arr.pop != "(")
+		elsif (open_close_chars.key?(c))
+			return false if (open_close_chars[c] != char_arr.pop)
 		end
    end
 
